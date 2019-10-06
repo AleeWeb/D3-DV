@@ -5,8 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Fun Smiley</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="face.js"></script>
+    <style>
+    </style>
 </head>
 <body>
-    <h1>Code is coming...</h1>
+   <svg width="960" height="500">
+
+   </svg>
+
+   <script>
+   const svg = d3.select('svg');
+
+const width = +svg.attr('width'); //Parse string into a number
+const height = +svg.attr('height');
+
+const circle = svg.append('circle') 
+    .attr('r', height / 2)  
+    .attr('cx', width / 2)
+    .attr('cy', height / 2)
+    .attr('fill', 'yellow')
+    .attr('stroke', 'black');
+
+    const leftEye = svg.append('circle') 
+    .attr('r', 30)  
+    .attr('cx', width / 2 - 100)
+    .attr('cy', height / 2 - 70)
+    .attr('fill', 'black');
+
+    const rightEye = svg.append('circle') 
+    .attr('r', 30)  
+    .attr('cx', width / 2 + 100)
+    .attr('cy', height / 2 - 70)
+    .attr('fill', 'black');
+      
+      
+   </script>
 </body>
 </html>
