@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = { 
   entry: {
-    face: './src/face/index.js',
+    smiley: './src/smiley/index.js',
     barChart: './src/barchart/index.js',
     scatterPlot: './src/scatterplot/index.js'
   }, 
