@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/face/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -6314,15 +6314,15 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dis
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
+/***/ "./src/face/index.js":
+/*!***************************!*\
+  !*** ./src/face/index.js ***!
+  \***************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! d3 */ \"./node_modules/d3/index.js\");\n\nconst svg = Object(d3__WEBPACK_IMPORTED_MODULE_0__[\"select\"])('svg');\nconst width = +svg.attr('width'); //Parse string into a number\n\nconst height = +svg.attr('height');\nconst circle = svg.append('circle').attr('r', height / 2).attr('cx', width / 2).attr('cy', height / 2).attr('fill', 'yellow').attr('stroke', 'black');\nconst leftEye = svg.append('circle').attr('r', 30).attr('cx', width / 2 - 100).attr('cy', height / 2 - 70).attr('fill', 'black');\nconst rightEye = svg.append('circle').attr('r', 30).attr('cx', width / 2 + 100).attr('cy', height / 2 - 70).attr('fill', 'black');\nconst mouth = g.append('path').attr('d', arc()({\n  innerRadius: 150,\n  outerRadius: 170,\n  startAngle: Math.PI / 2,\n  endAngle: Math.PI * 3 / 2\n}));\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! d3 */ \"./node_modules/d3/index.js\");\n\nconst svg = Object(d3__WEBPACK_IMPORTED_MODULE_0__[\"select\"])('svg');\nconst width = +svg.attr('width');\nconst height = +svg.attr('height'); // Start of D3 Smiley\n\nconst g = svg.append('g').attr('transform', `translate(${width / 2}, ${height / 2})`);\nconst circle = g.append('circle');\ncircle.attr('r', height / 2);\ncircle.attr('fill', 'yellow');\ncircle.attr('stroke', 'black');\nconst eyeSpacing = 101;\nconst eyeYOffset = -89;\nconst eyeRadius = 40;\nconst eyebrowWidth = 70;\nconst eyebrowHeight = 20;\nconst eyebrowYOffset = -70;\nconst eyesG = g.append('g').attr('transform', `translate(0, ${eyeYOffset})`);\nconst leftEye = eyesG.append('circle').attr('r', eyeRadius).attr('cx', -eyeSpacing);\nconst rightEye = eyesG.append('circle').attr('r', eyeRadius).attr('cx', eyeSpacing);\nconst eyebrowsG = eyesG.append('g').attr('transform', `translate(0, ${eyebrowYOffset})`);\neyebrowsG.transition().duration(2000).attr('transform', `translate(0, ${eyebrowYOffset - 50})`).transition().duration(2000).attr('transform', `translate(0, ${eyebrowYOffset})`);\nconst leftEyebrow = eyebrowsG.append('rect').attr('x', -eyeSpacing - eyebrowWidth / 2).attr('width', eyebrowWidth).attr('height', eyebrowHeight);\nconst rightEyebrow = eyebrowsG.append('rect').attr('x', eyeSpacing - eyebrowWidth / 2).attr('width', eyebrowWidth).attr('height', eyebrowHeight);\nconst mouth = g.append('path').attr('d', Object(d3__WEBPACK_IMPORTED_MODULE_0__[\"arc\"])()({\n  innerRadius: 150,\n  outerRadius: 170,\n  startAngle: Math.PI / 2,\n  endAngle: Math.PI * 3 / 2\n})); // End of D3 Smiley Face\n// Start of Bar Chart\n// CSV method returns a promise when the data is loaded\n\nObject(d3__WEBPACK_IMPORTED_MODULE_0__[\"csv\"])('data.csv').then(data => {\n  console.log(data);\n});\n\n//# sourceURL=webpack:///./src/face/index.js?");
 
 /***/ })
 

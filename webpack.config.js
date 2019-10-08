@@ -1,10 +1,14 @@
 const path = require('path'); 
 
 module.exports = { 
-    entry: './src/index.js', 
+  entry: {
+    face: './src/face/index.js',
+    barChart: './src/barchart/index.js',
+    scatterPlot: './src/scatterplot/index.js'
+  }, 
     output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist')
+      path: path.resolve(__dirname, 'dist'),
+      filename: '[name].js'
       },
       module: {
              rules: [
