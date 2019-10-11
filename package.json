@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AleeWeb/FCC-D3.git"
+    "url": "git+https://github.com/AleeWeb/D3-DV.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AleeWeb/FCC-D3/issues"
+    "url": "https://github.com/AleeWeb/D3-DV/issues"
   },
-  "homepage": "https://github.com/AleeWeb/FCC-D3#readme",
+  "homepage": "https://github.com/AleeWeb/D3-DV#readme",
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",

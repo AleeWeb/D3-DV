@@ -6,7 +6,7 @@ import {
   scaleBand,
   axisLeft,
   axisBottom,
-  format
+  format // D3 number formatting module
 } from 'd3';
 
 const titleText = 'Top 10 Most Populous Countries';

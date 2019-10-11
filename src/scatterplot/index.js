@@ -1,7 +1,89 @@
-import { select } from 'd3';
 
-const svg = select('svg');
+// Scatter plots use CIRCLES instead of bars
 
-const width = +svg.attr('width');
-const height = +svg.attr('height');
-
+import {
+    select,
+    csv,
+    scaleLinear,
+    max,
+    scaleBand,
+    axisLeft,
+    axisBottom,
+    format // D3 number formatting module
+  } from 'd3';
+  
+  const titleText = 'Top 10 Most Populous Countries';
+  const xAxisLabelText = 'Population';
+  
+  const svg = select('svg');
+  
+  const width = +svg.attr('width');
+  const height = +svg.attr('height');
+  
+  const render = data => {
+    const xValue = d => d['population'];
+    const yValue = d => d.country;
+    const margin = { top: 50, right: 40, bottom: 77, left: 180 };
+    const innerWidth = width - margin.left - margin.right;
+    const innerHeight = height - margin.top - margin.bottom;
+    
+    const xScale = scaleLinear()
+      .domain([0, max(data, xValue)])
+      .range([0, innerWidth]);
+    
+    const yScale = scaleBand()
+      .domain(data.map(yValue))
+      .range([0, innerHeight])
+      .padding(0.1);
+    
+    const g = svg.append('g')
+      .attr('transform', `translate(${margin.left},${margin.top})`);
+    
+    const xAxisTickFormat = number =>
+      format('.3s')(number)
+        .replace('G', 'B');
+    
+    const xAxis = axisBottom(xScale)
+      .tickFormat(xAxisTickFormat)
+      .tickSize(-innerHeight);
+    
+    g.append('g')
+      .call(axisLeft(yScale))
+      .selectAll('.domain, .tick line')
+        .remove();
+    
+    const xAxisG = g.append('g').call(xAxis)
+      .attr('transform', `translate(0,${innerHeight})`);
+    
+    xAxisG.select('.domain').remove();
+    
+    xAxisG.append('text')
+        .attr('class', 'axis-label')
+        .attr('y', 65)
+        .attr('x', innerWidth / 2)
+        .attr('fill', 'black')
+        .text(xAxisLabelText);
+    
+    g.selectAll('circle').data(data)
+      .enter().append('circle')
+        .attr('cy', d => yScale(yValue(d)) +yScale.bandwidth() / 2)
+        .attr('cx', d => xScale(xValue(d)))
+        .attr('r', yScale.bandwidth() / 2); //Fixes the circle diameter to prevents overlapping 
+    
+    g.append('text')
+        .attr('class', 'title')
+        .attr('y', -10)
+        .text(titleText);
+  };
+  
+  // The D3 CSV function returns a promise when the data is loaded
+  csv('data.csv').then(data => {
+    data.forEach(d => {
+      d.population = +d.population * 1000; //+d Parses population data value strings into numbers to fix the default
+    });
+    render(data);
+  });
+  
+  
+  
+  
